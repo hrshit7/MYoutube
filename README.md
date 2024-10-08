@@ -4,6 +4,10 @@
 
 - create react app
 - tailwindcss initialized
+- header
+- sidebar
+- redux installation
+- build store & slice for sidebar
 
 
 # Planning 
