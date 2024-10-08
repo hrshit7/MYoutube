@@ -1,14 +1,16 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import FIlterbar from './FIlterbar'
 import MainContainer from './MainContainer'
+import SuggestionBar from './SuggestionBar'
 
 const body = () => {
   return (
     <div className='flex'>
         <Sidebar/>
         <div>
-            <FIlterbar/>
+            <div>
+                <SuggestionBar/>
+            </div>
             <MainContainer/>
         </div>
     </div>

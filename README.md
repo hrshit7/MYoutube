@@ -8,6 +8,7 @@
 - sidebar
 - redux installation
 - build store & slice for sidebar
+- suggestion filter bar
 
 
 # Planning 

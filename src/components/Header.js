@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className='grid grid-flow-col mx-2 shadow-lg'>
       <div className='col-span-1 flex'>
-        <img className='h-10 mx-2 mt-6' alt="Hamburger Logo" src={HAMBURGER_LOGO} onClick={handleMenuChange}></img>
+        <img className='h-10 mx-2 mt-6 cursor-pointer' alt="Hamburger Logo" src={HAMBURGER_LOGO} onClick={handleMenuChange}></img>
         <img className='w-40 mx-4 ' alt='Youtube logo' src={YOUTUBE_LOGO}></img>
       </div>
       <div className='col-span-10 pt-8 text-center'>
