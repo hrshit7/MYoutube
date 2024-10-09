@@ -9,6 +9,8 @@
 - redux installation
 - build store & slice for sidebar
 - suggestion filter bar
+- fetch videos from youtube apis
+- make videocards
 
 
 # Planning 

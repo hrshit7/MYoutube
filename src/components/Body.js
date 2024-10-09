@@ -1,20 +1,18 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import MainContainer from './MainContainer'
-import SuggestionBar from './SuggestionBar'
+import { useSelector } from 'react-redux'
+import { Outlet } from 'react-router-dom'
 
-const body = () => {
+const Body = () => {
+
+  const menu = useSelector((store)=> store.app.isMenuBar);
+
   return (
-    <div className='flex'>
+    <div className='flex' >
         <Sidebar/>
-        <div>
-            <div>
-                <SuggestionBar/>
-            </div>
-            <MainContainer/>
-        </div>
+        <Outlet/>
     </div>
   )
 }
 
-export default body
+export default Body;
