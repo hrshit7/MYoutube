@@ -1,17 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import { HAMBURGER_LOGO, USER_LOGo, YOUTUBE_LOGO, YOUTUBE_SEARCH_API } from '../utils/constant'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleIsMenuBar } from '../utils/appSlice';
+import { addsuggetions } from '../utils/searchSlice';
 
 const Header = () => {
 
-  const [searchQuery, setSearchQuery] = useState(" ");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [suggestion, setSuggestion] = useState([]);
+
+  const [onSearch, setOnSearch] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const forSearch = useSelector((store)=> store.search);
 
   useEffect(()=>{
 
     //rerender and decline the api call
+    
+    const timer =  setTimeout(()=>{
+      if(forSearch[searchQuery]){
+        return setSuggestion(forSearch[searchQuery]);
+      }else {
 
-    const timer =  setTimeout(()=> getYoutubeSearches() , 200);
+      }
+      getYoutubeSearches()}, 
+      200); 
 
     return ()=>{
       clearTimeout(timer);
@@ -37,9 +53,13 @@ const Header = () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
     console.log("API call = " + searchQuery);
+    setSuggestion(json[1]);
+    dispatch(
+      addsuggetions({
+        [searchQuery] : json[1],
+      })
+    );
   }
-
-  const dispatch = useDispatch();
 
   const handleMenuChange =()=>{
     dispatch(toggleIsMenuBar());
@@ -51,10 +71,20 @@ const Header = () => {
         <img className='h-14 mx-2 mt-3 cursor-pointer' alt="Hamburger Logo" src={HAMBURGER_LOGO} onClick={handleMenuChange}></img>
         <img className='h-20 mx-2' alt='Youtube logo' src={YOUTUBE_LOGO}></img>
       </div>
-      <div className='col-span-10 pt-7 text-center'>
-        <input className=' border border-gray-300 w-1/2 rounded-l-full p-1' value={searchQuery} onChange={(e)=> setSearchQuery(e.target.value)}></input>
-        <button className='rounded-r-full border border-gray-300 p-1 bg-gray-50 hover:bg-gray-100'> 🔍 </button>
+      <div className='col-span-10 pt-7 '>
+        <input className=' border border-gray-300 w-1/2 rounded-l-full p-1 px-9' type='text' value={searchQuery} onChange={(e)=> setSearchQuery(e.target.value)} onFocus={()=>{setOnSearch(true)}} onBlur={()=>{setOnSearch(false)}} ></input>
+        <button className='rounded-r-full border border-gray-300 p-1 bg-gray-50 hover:bg-gray-100 w-14'> 🔍 </button>
         <button className='mx-6 rounded-full bg-gray-50 hover:bg-gray-100 p-1'>🎙️</button>
+        {
+          onSearch && 
+          <div className='absolute bg-white w-[34rem] my-1 rounded-xl shadow-xl border border-gray-200'>
+            <ul className='py-4'>
+              {
+              suggestion.map((s)=><li key={s} className='px-3 py-1 hover:bg-gray-200'>🔍 {s}</li>)
+              }
+            </ul>
+          </div>
+        }
       </div>
       <div className='col-span-1 pt-7'>
         <img className='h-8' alt='User logo' src={USER_LOGo}></img>
