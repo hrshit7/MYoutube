@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom'
 import { closeMenu } from '../utils/appSlice';
 import MainContainer from './MainContainer';
+import CommentContainer from './CommentContainer';
 
 const VideoContainer = () => {
 
@@ -28,6 +29,7 @@ const VideoContainer = () => {
         allowFullScreen
         >
         </iframe>
+        <CommentContainer/>
       </div>
       <div>
         <MainContainer/>
