@@ -6,6 +6,7 @@ import appStore from './utils/appStore';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import VideoContainer from './components/VideoContainer';
 import MainContainer from './components/MainContainer';
+import SearchVideoContainer from './components/SearchVideoContainer';
 
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
         {
           path:"watch",
           element:<VideoContainer/>
+        },
+        {
+          path:"results",
+          element:<SearchVideoContainer/>
         },
       ]
     },
