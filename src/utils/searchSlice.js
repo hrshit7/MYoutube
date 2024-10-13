@@ -5,6 +5,7 @@ const searchSlice = createSlice({
     initialState: {
         suggestions: {},
         searchValue: "",
+        searchVideos: {},
     },
     reducers:{
         addsuggetions : (state, action)=>{
@@ -13,9 +14,12 @@ const searchSlice = createSlice({
         addSearchValue: (state, action)=>{
             state.searchValue = action.payload;
         },
+        addSearchVideos: (state, action)=>{
+            state.searchVideos = action.payload;
+        }
     },
 })
 
-export const { addsuggetions, addSearchValue } = searchSlice.actions;
+export const { addsuggetions, addSearchValue, addSearchVideos } = searchSlice.actions;
 
 export default searchSlice.reducer;

@@ -1,12 +1,11 @@
 import './App.css';
-import Header from './components/Header';
 import Body from './components/Body'
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import VideoContainer from './components/VideoContainer';
 import MainContainer from './components/MainContainer';
-import SearchVideoContainer from './components/SearchVideoContainer';
+import SearchVideoPage from './components/SearchVideoPage';
 
 function App() {
 
@@ -25,7 +24,7 @@ function App() {
         },
         {
           path:"results",
-          element:<SearchVideoContainer/>
+          element:<SearchVideoPage/>
         },
       ]
     },
@@ -34,7 +33,7 @@ function App() {
   return (
     <Provider store={appStore}>
       <div>
-        <Header/>
+        
         <RouterProvider router={appRouter}></RouterProvider>
       </div>
     </Provider>

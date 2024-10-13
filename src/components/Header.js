@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleIsMenuBar } from '../utils/appSlice';
 import { addSearchValue, addsuggetions } from '../utils/searchSlice';
 import { Link } from 'react-router-dom';
+import SearchVideoContainer from './SearchVideoContainer';
 
 const Header = () => {
 
@@ -87,7 +88,7 @@ const Header = () => {
           <div className='absolute bg-white w-[34rem] my-1 rounded-xl shadow-xl border border-gray-200'>
             <ul className='py-4'>
               {
-              suggestion.map((s)=><li key={s} className='px-3 py-1 hover:bg-gray-200' onClick={()=>handleSearchKey(s)}>🔍 {s}</li>)
+              suggestion.map((s)=><Link to={"/results?search_query=" + s.replace(/ /g, "+")}><li key={s} className='px-3 py-1 hover:bg-gray-200' onClick={()=>handleSearchKey(s)}>🔍 {s}</li></Link>)
               }
             </ul>
           </div>
