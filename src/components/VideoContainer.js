@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useSearchParams } from 'react-router-dom'
-import { closeMenu } from '../utils/appSlice';
-import MainContainer from './MainContainer';
+import { closeMenu, onVideoContainer } from '../utils/appSlice';
 import CommentContainer from './CommentContainer';
+import LiveChat from './LiveChat';
 
 const VideoContainer = () => {
 
@@ -13,10 +13,11 @@ const VideoContainer = () => {
 
   useEffect(()=>{
     dispatch(closeMenu());
+    dispatch(onVideoContainer());
   }, [])
 
   return (
-    <div className='flex mt-8 ml-8'>
+    <div className='flex mt-8 ml-8 w-full'>
       <div>
         <iframe
         className='rounded-xl'
@@ -31,9 +32,7 @@ const VideoContainer = () => {
         </iframe>
         <CommentContainer/>
       </div>
-      <div>
-        <MainContainer/>
-      </div>
+      <div className='w-full'><LiveChat/></div>
     </div>
   )
 }

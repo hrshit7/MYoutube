@@ -4,6 +4,7 @@ const appSlice = createSlice({
     name: "app",
     initialState: {
         isMenuBar: true,
+        VideoContainer: false,
     },
     reducers: {
         toggleIsMenuBar: (state)=>{
@@ -12,9 +13,12 @@ const appSlice = createSlice({
         closeMenu: (state,action)=>{
             state.isMenuBar = false;
         },
+        onVideoContainer: (state)=>{
+            state.VideoContainer= true;
+        }
     },
 })
 
-export const {toggleIsMenuBar, closeMenu} = appSlice.actions;
+export const {toggleIsMenuBar, closeMenu, onVideoContainer} = appSlice.actions;
 
 export default appSlice.reducer;

@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HAMBURGER_LOGO, USER_LOGo, YOUTUBE_LOGO, YOUTUBE_SEARCH_API } from '../utils/constant'
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleIsMenuBar } from '../utils/appSlice';
 import { addSearchValue, addsuggetions } from '../utils/searchSlice';
 import { Link } from 'react-router-dom';
-import SearchVideoContainer from './SearchVideoContainer';
+
 
 const Header = () => {
 
@@ -17,8 +17,6 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const forSearch = useSelector((store)=> store.search.suggestions);
-
-  const searchKey = useSelector((store)=> store.search.searchValue);
 
   useEffect(()=>{
 
@@ -77,7 +75,7 @@ const Header = () => {
     <div className='grid grid-flow-col mx-2 shadow-lg'>
       <div className='col-span-1 flex'>
         <img className='h-14 mx-2 mt-3 cursor-pointer' alt="Hamburger Logo" src={HAMBURGER_LOGO} onClick={handleMenuChange}></img>
-        <img className='h-20 mx-2' alt='Youtube logo' src={YOUTUBE_LOGO}></img>
+        <Link to="/"><img className='h-20 mx-2' alt='Youtube logo' src={YOUTUBE_LOGO}></img></Link>
       </div>
       <div className='col-span-10 pt-7 '>
         <input className=' border border-gray-300 w-1/2 rounded-l-full p-1 px-9' type='text' value={searchQuery} onChange={(e)=> setSearchQuery(e.target.value)} onFocus={()=>{setOnSearch(true)}} onBlur={()=>{setTimeout(()=>{setOnSearch(false)},1000)}} ></input>

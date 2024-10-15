@@ -11,6 +11,12 @@
 - suggestion filter bar
 - fetch videos from youtube apis
 - make videocards
+- full video container
+- search bar debouncing, caching and more features on it
+- video comments container - n level like reddit
+- Search Videos container
+- live feature full functional like youtube with exact and better functionalities
+- more features in line..........
 
 
 # Planning 

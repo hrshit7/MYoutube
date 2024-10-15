@@ -6,10 +6,12 @@ const Sidebar = () => {
 
     const isMenuOpen = useSelector((store)=> store.app.isMenuBar);
 
+    const videoComp = useSelector(store=> store.app.VideoContainer);
+
     if(!isMenuOpen) return null;
 
   return (
-    <div className='shadow-md w-84'>
+    <div className={videoComp ? 'absolute bg-white' : 'shadow-md w-84' }>
        <div className='shadow-md px-7 py-3'>
         <ul >
             <li className='p-1 px-16'><Link to="/">Home</Link></li>
