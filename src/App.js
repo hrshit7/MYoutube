@@ -6,6 +6,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import VideoContainer from './components/VideoContainer';
 import MainContainer from './components/MainContainer';
 import SearchVideoPage from './components/SearchVideoPage';
+import Demo from './components/Demo';
+import Demo2 from './components/Demo2';
 
 function App() {
 
@@ -20,11 +22,15 @@ function App() {
         },
         {
           path:"watch",
-          element:<VideoContainer/>
+          element:<VideoContainer/>,
         },
         {
           path:"results",
-          element:<SearchVideoPage/>
+          element:<SearchVideoPage/>,
+        },
+        {
+          path:"demo",
+          element:<><Demo/><Demo2/></>,
         },
       ]
     },
